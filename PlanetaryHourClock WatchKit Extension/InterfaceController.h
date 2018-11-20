@@ -11,4 +11,7 @@
 
 @interface InterfaceController : WKInterfaceController
 
+@property (weak, nonatomic) IBOutlet WKInterfaceLabel *planetaryHourSymbolLabel;
+@property (weak, nonatomic) IBOutlet WKInterfaceLabel *planetaryHourNameLabel;
+
 @end

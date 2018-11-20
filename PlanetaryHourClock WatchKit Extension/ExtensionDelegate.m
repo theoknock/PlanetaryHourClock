@@ -7,11 +7,13 @@
 //
 
 #import "ExtensionDelegate.h"
+#import "PlanetaryHourDataSource.h"
 
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching {
     // Perform any final initialization of your application.
+    [[[PlanetaryHourDataSource sharedDataSource] locationManager] requestLocation];
 }
 
 - (void)applicationDidBecomeActive {

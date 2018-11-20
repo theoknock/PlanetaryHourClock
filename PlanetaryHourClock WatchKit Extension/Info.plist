@@ -24,17 +24,8 @@
 	<string>ComplicationController</string>
 	<key>CLKComplicationSupportedFamilies</key>
 	<array>
-		<string>CLKComplicationFamilyModularSmall</string>
 		<string>CLKComplicationFamilyModularLarge</string>
-		<string>CLKComplicationFamilyUtilitarianSmall</string>
-		<string>CLKComplicationFamilyUtilitarianSmallFlat</string>
-		<string>CLKComplicationFamilyUtilitarianLarge</string>
-		<string>CLKComplicationFamilyCircularSmall</string>
-		<string>CLKComplicationFamilyExtraLarge</string>
-		<string>CLKComplicationFamilyGraphicCorner</string>
-		<string>CLKComplicationFamilyGraphicBezel</string>
-		<string>CLKComplicationFamilyGraphicCircular</string>
-		<string>CLKComplicationFamilyGraphicRectangular</string>
+		<string>CLKComplicationFamilyModularSmall</string>
 	</array>
 	<key>NSExtension</key>
 	<dict>
@@ -46,6 +37,14 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Planetary hours are calculated based on your GPS location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Planetary hours are calculated based on your GPS location</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Planetary hours are calculated based on your GPS location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Planetary hours are calculated based on your GPS location</string>
 	<key>WKExtensionDelegateClassName</key>
 	<string>ExtensionDelegate</string>
 </dict>
