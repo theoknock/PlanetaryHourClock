@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B923225721A4CA0400FB6572 /* TableInterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923225321A4CA0400FB6572 /* TableInterfaceController.m */; };
+		B923225821A4CA0400FB6572 /* PlanetaryHourRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923225521A4CA0400FB6572 /* PlanetaryHourRowController.m */; };
 		B9282FE321A24CDD00038223 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ACC08A21A0E3A900574C3F /* Interface.storyboard */; };
 		B9282FE821A26CFA00038223 /* PlanetaryHourDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B9282FE721A26CFA00038223 /* PlanetaryHourDataSource.m */; };
 		B9ACC07421A0E3A800574C3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC07321A0E3A800574C3F /* AppDelegate.m */; };
@@ -19,7 +21,6 @@
 		B9ACC08C21A0E3A900574C3F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ACC08A21A0E3A900574C3F /* Interface.storyboard */; };
 		B9ACC08E21A0E3A900574C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9ACC08D21A0E3A900574C3F /* Assets.xcassets */; };
 		B9ACC09521A0E3A900574C3F /* PlanetaryHourClock WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9ACC09421A0E3A900574C3F /* PlanetaryHourClock WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B9ACC09B21A0E3A900574C3F /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC09A21A0E3A900574C3F /* InterfaceController.m */; };
 		B9ACC09E21A0E3A900574C3F /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC09D21A0E3A900574C3F /* ExtensionDelegate.m */; };
 		B9ACC0A121A0E3A900574C3F /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC0A021A0E3A900574C3F /* NotificationController.m */; };
 		B9ACC0A421A0E3A900574C3F /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC0A321A0E3A900574C3F /* ComplicationController.m */; };
@@ -71,6 +72,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B923225321A4CA0400FB6572 /* TableInterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableInterfaceController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		B923225421A4CA0400FB6572 /* PlanetaryHourRowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanetaryHourRowController.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B923225521A4CA0400FB6572 /* PlanetaryHourRowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanetaryHourRowController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		B923225621A4CA0400FB6572 /* TableInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableInterfaceController.h; sourceTree = "<group>"; wrapsLines = 0; };
 		B9282FE621A26CFA00038223 /* PlanetaryHourDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanetaryHourDataSource.h; sourceTree = "<group>"; wrapsLines = 0; };
 		B9282FE721A26CFA00038223 /* PlanetaryHourDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanetaryHourDataSource.m; sourceTree = "<group>"; wrapsLines = 0; };
 		B9ACC06F21A0E3A800574C3F /* PlanetaryHourClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanetaryHourClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,8 +93,6 @@
 		B9ACC08D21A0E3A900574C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9ACC08F21A0E3A900574C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9ACC09421A0E3A900574C3F /* PlanetaryHourClock WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PlanetaryHourClock WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9ACC09921A0E3A900574C3F /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
-		B9ACC09A21A0E3A900574C3F /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		B9ACC09C21A0E3A900574C3F /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
 		B9ACC09D21A0E3A900574C3F /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
 		B9ACC09F21A0E3A900574C3F /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
@@ -173,8 +176,10 @@
 		B9ACC09821A0E3A900574C3F /* PlanetaryHourClock WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B9ACC09921A0E3A900574C3F /* InterfaceController.h */,
-				B9ACC09A21A0E3A900574C3F /* InterfaceController.m */,
+				B923225421A4CA0400FB6572 /* PlanetaryHourRowController.h */,
+				B923225521A4CA0400FB6572 /* PlanetaryHourRowController.m */,
+				B923225621A4CA0400FB6572 /* TableInterfaceController.h */,
+				B923225321A4CA0400FB6572 /* TableInterfaceController.m */,
 				B9ACC09C21A0E3A900574C3F /* ExtensionDelegate.h */,
 				B9ACC09D21A0E3A900574C3F /* ExtensionDelegate.m */,
 				B9ACC09F21A0E3A900574C3F /* NotificationController.h */,
@@ -343,9 +348,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9ACC09E21A0E3A900574C3F /* ExtensionDelegate.m in Sources */,
+				B923225821A4CA0400FB6572 /* PlanetaryHourRowController.m in Sources */,
 				B9ACC0B821A0E60100574C3F /* FESSolarCalculator.m in Sources */,
 				B9ACC0A421A0E3A900574C3F /* ComplicationController.m in Sources */,
-				B9ACC09B21A0E3A900574C3F /* InterfaceController.m in Sources */,
+				B923225721A4CA0400FB6572 /* TableInterfaceController.m in Sources */,
 				B9ACC0A121A0E3A900574C3F /* NotificationController.m in Sources */,
 				B9282FE821A26CFA00038223 /* PlanetaryHourDataSource.m in Sources */,
 			);

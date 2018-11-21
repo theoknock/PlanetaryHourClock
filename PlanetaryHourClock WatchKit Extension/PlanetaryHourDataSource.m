@@ -30,6 +30,7 @@ static PlanetaryHourDataSource *sharedDataSource = NULL;
 {
     if (self == [super init])
     {
+        self.planetaryHourDataRequestQueue = dispatch_queue_create_with_target("Planetary Hour Data Request Queue", DISPATCH_QUEUE_CONCURRENT, dispatch_get_main_queue());
     }
     
     return self;
@@ -70,7 +71,7 @@ static PlanetaryHourDataSource *sharedDataSource = NULL;
     if (status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusRestricted)
     {
         NSLog(@"Failure to authorize location services\t%d", status);
-        [manager stopUpdatingLocation];
+//        [manager stopUpdatingLocation];
     }
     else
     {
@@ -78,7 +79,7 @@ static PlanetaryHourDataSource *sharedDataSource = NULL;
             status == kCLAuthorizationStatusAuthorizedAlways)
         {
             NSLog(@"Location services authorized\t%d", status);
-            [manager startUpdatingLocation];
+//            [manager startUpdatingLocation];
         } else {
             NSLog(@"Location services authorization status code:\t%d", status);
         }
@@ -275,7 +276,7 @@ NSAttributedString *(^attributedPlanetSymbol)(NSString *) = ^(NSString *symbol) 
     NSMutableParagraphStyle *centerAlignedParagraphStyle  = [[NSMutableParagraphStyle alloc] init];
     centerAlignedParagraphStyle.alignment                 = NSTextAlignmentCenter;
     NSDictionary *centerAlignedTextAttributes             = @{NSForegroundColorAttributeName : colorForPlanetSymbol(symbol),
-                                                              NSFontAttributeName            : [UIFont systemFontOfSize:11.0 weight:UIFontWeightMedium],
+                                                              NSFontAttributeName            : [UIFont systemFontOfSize:48.0 weight:UIFontWeightBold],
                                                               NSParagraphStyleAttributeName  : centerAlignedParagraphStyle};
     
     NSAttributedString *attributedSymbol = [[NSAttributedString alloc] initWithString:symbol attributes:centerAlignedTextAttributes];
@@ -314,7 +315,7 @@ NSArray<NSNumber *> *(^hourDurations)(NSTimeInterval) = ^(NSTimeInterval daySpan
     return hourDurations;
 };
 
-- (void)currentPlanetaryHourUsingBlock:(CurrentPlanetaryHourCompletionBlock)currentPlanetaryHour
+- (void)planetaryHours:(CurrentPlanetaryHourCompletionBlock)currentPlanetaryHour
 {
     FESSolarCalculator *solarCalculation = [self solarCalculationForDate:nil location:nil];
     NSTimeInterval daySpan         = [solarCalculation.sunset timeIntervalSinceDate:solarCalculation.sunrise];
@@ -326,7 +327,7 @@ NSArray<NSNumber *> *(^hourDurations)(NSTimeInterval) = ^(NSTimeInterval daySpan
     void(^planetaryHoursDictionary)(void) = ^(void) {
         Meridian meridian                 = (hour < HOURS_PER_SOLAR_TRANSIT) ? AM : PM;
         SolarTransit transit              = (hour < HOURS_PER_SOLAR_TRANSIT) ? Sunrise : Sunset;
-        NSInteger mod_hour = hour % 12;
+        NSInteger mod_hour                = hour % 12;
         NSTimeInterval startTimeInterval  = durations[meridian].doubleValue * mod_hour;
         NSDate *sinceDate                 = (transit == Sunrise) ? solarCalculation.sunrise : solarCalculation.sunset;
         NSDate *startTime                 = [[NSDate alloc] initWithTimeInterval:startTimeInterval sinceDate:sinceDate];
@@ -334,18 +335,17 @@ NSArray<NSNumber *> *(^hourDurations)(NSTimeInterval) = ^(NSTimeInterval daySpan
         NSDate *endTime                   = [[NSDate alloc] initWithTimeInterval:endTimeInterval sinceDate:sinceDate];
         NSDateInterval *dateInterval      = [[NSDateInterval alloc] initWithStartDate:startTime endDate:endTime];
         
-        if ([dateInterval containsDate:[NSDate date]]) {
-            NSAttributedString *symbol        = attributedPlanetSymbol(planetSymbolForHour(solarCalculation.sunrise, hour));
-            NSString *name                    = planetNameForHour(solarCalculation.sunrise, hour);
-            currentPlanetaryHour(symbol, name, startTime);
-        } else {
-            hour++;
+        NSAttributedString *symbol        = attributedPlanetSymbol(planetSymbolForHour(solarCalculation.sunrise, hour));
+        NSString *name                    = planetNameForHour(solarCalculation.sunrise, hour);
+        currentPlanetaryHour(symbol, name, startTime, endTime, hour, ([dateInterval containsDate:[NSDate date]]) ? YES : NO);
+        
+        hour++;
+        if (hour < HOURS_PER_DAY)
             planetaryHoursDictionaries();
-        }
     };
     
     planetaryHoursDictionaries = ^{
-        if (hour < HOURS_PER_DAY)
+        
             planetaryHoursDictionary();
     };
     planetaryHoursDictionaries();

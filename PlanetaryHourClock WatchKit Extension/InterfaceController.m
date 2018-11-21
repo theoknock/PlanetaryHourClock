@@ -11,6 +11,9 @@
 
 
 @interface InterfaceController ()
+{
+    dispatch_source_t interfaceUpdateTimer;
+}
 
 @end
 
@@ -21,7 +24,7 @@
     [super awakeWithContext:context];    
 
     // Configure interface objects here.
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateInterface) name:@"PlanetaryHoursDataSourceUpdatedNotification" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateInterface) name:@"PlanetaryHoursDataSourceUpdatedNotification" object:nil];
 }
 
 - (void)willActivate {
@@ -35,13 +38,28 @@
     [super didDeactivate];
 }
 
-- (void)updateInterface
-{
-    [[PlanetaryHourDataSource sharedDataSource] currentPlanetaryHourUsingBlock:^(NSAttributedString * _Nonnull symbol, NSString * _Nonnull name, NSDate * _Nonnull date) {
-        [self.planetaryHourSymbolLabel setAttributedText:symbol];
-        [self.planetaryHourNameLabel setText:name];
-    }];
-}
+//- (void)updateInterface
+//{
+////    if (interfaceUpdateTimer)
+////        dispatch_suspend(interfaceUpdateTimer);
+////    __weak typeof(dispatch_source_t) w_interfaceUpdateTimer = interfaceUpdateTimer;
+//    [[PlanetaryHourDataSource sharedDataSource] currentPlanetaryHourUsingBlock:^(NSAttributedString * _Nonnull symbol, NSString * _Nonnull name, NSDate * _Nonnull startDate, NSDate * _Nonnull endDate) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.planetaryHourSymbolLabel setAttributedText:symbol];
+//            [self.planetaryHourNameLabel setText:name];
+//            [self.planetaryHourDurationCountupTimerLabel setDate:startDate];
+//            [self.planetaryHourDurationCountdownTimerLabel setDate:endDate];
+//        });
+//        //        NSTimeInterval timer_countdown = [endDate timeIntervalSinceDate:startDate];
+////        __strong dispatch_source_t s_interfaceUpdateTimer = w_interfaceUpdateTimer;
+////        s_interfaceUpdateTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, PlanetaryHourDataSource.sharedDataSource.planetaryHourDataRequestQueue);
+////        dispatch_source_set_timer(s_interfaceUpdateTimer, DISPATCH_TIME_NOW, timer_countdown * NSEC_PER_SEC, 1.0 * NSEC_PER_SEC);
+////        dispatch_source_set_event_handler(s_interfaceUpdateTimer, ^{
+////            [self updateInterface];
+////        });
+////        dispatch_resume(s_interfaceUpdateTimer);
+//    }];
+//}
 
 @end
 

@@ -13,5 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *planetaryHourSymbolLabel;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *planetaryHourNameLabel;
+@property (weak, nonatomic) IBOutlet WKInterfaceTimer *planetaryHourDurationCountdownTimerLabel;
+@property (weak, nonatomic) IBOutlet WKInterfaceTimer *planetaryHourDurationCountupTimerLabel;
 
 @end

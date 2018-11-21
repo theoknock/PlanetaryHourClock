@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="krG-kh-mPi" pageOrientation="vertical">
     <device id="watch44" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,23 +8,72 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
+        <!--Table Interface Controller-->
+        <scene sceneID="hJs-A1-ru7">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                <controller animationDuration="1" alwaysBounce="YES" fullScreen="YES" id="krG-kh-mPi" customClass="TableInterfaceController">
                     <items>
-                        <label alignment="center" verticalAlignment="center" text="㊏" textAlignment="center" id="HeA-Dr-1qS">
-                            <fontDescription key="font" style="UICTFontTextStyleTitle0"/>
-                        </label>
-                        <label alignment="center" verticalAlignment="center" text="EARTH" id="wnt-2f-bwe"/>
+                        <table alignment="center" verticalAlignment="center" id="C7H-qT-wzu">
+                            <items>
+                                <tableRow identifier="PlanetaryHoursTableRow" selectable="NO" id="GBy-fj-OJ8" customClass="PlanetaryHourRowController">
+                                    <group key="rootItem" width="1" height="1" alignment="left" animationDuration="2" id="MJ0-iX-qT4">
+                                        <items>
+                                            <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="3C3-AV-Nf5">
+                                                <items>
+                                                    <group alignment="center" id="kI8-fQ-pbP">
+                                                        <items>
+                                                            <label alignment="center" verticalAlignment="center" text="+" textAlignment="right" id="MGX-Dg-cDm">
+                                                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </label>
+                                                            <timer alignment="center" verticalAlignment="center" textAlignment="left" enabled="YES" format="abbreviated" previewedSeconds="0" id="20a-fU-bjA">
+                                                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </timer>
+                                                        </items>
+                                                    </group>
+                                                    <label alignment="center" verticalAlignment="center" text="㊏" textAlignment="center" id="FHu-59-Ult">
+                                                        <fontDescription key="font" style="UICTFontTextStyleTitle0"/>
+                                                    </label>
+                                                    <label alignment="center" verticalAlignment="center" text="Earth" id="gux-oU-qaw">
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                                                    </label>
+                                                    <label alignment="center" verticalAlignment="center" text="Hour 0" id="XCD-fy-YbI"/>
+                                                    <group alignment="center" verticalAlignment="bottom" id="Q88-4X-2KR">
+                                                        <items>
+                                                            <label alignment="center" verticalAlignment="center" text="-" textAlignment="right" id="Bt1-H0-074">
+                                                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </label>
+                                                            <timer alignment="center" verticalAlignment="center" textAlignment="left" enabled="YES" format="abbreviated" previewedSeconds="0" id="R3y-b4-gyD">
+                                                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </timer>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="countDownTimer" destination="R3y-b4-gyD" id="Ryo-iH-ZRl"/>
+                                        <outlet property="countDownTimerGroup" destination="Q88-4X-2KR" id="2B5-ch-BcO"/>
+                                        <outlet property="countUpTimer" destination="20a-fU-bjA" id="Qdy-tl-I6j"/>
+                                        <outlet property="countUpTimerGroup" destination="kI8-fQ-pbP" id="a3E-wg-UvP"/>
+                                        <outlet property="hourLabel" destination="XCD-fy-YbI" id="uzQ-JY-Wuz"/>
+                                        <outlet property="planetLabel" destination="gux-oU-qaw" id="LU7-zJ-qrW"/>
+                                        <outlet property="rowGroup" destination="MJ0-iX-qT4" id="Rz1-wY-DMI"/>
+                                        <outlet property="symbolLabel" destination="FHu-59-Ult" id="xSK-da-cvw"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <connections>
-                        <outlet property="planetaryHourNameLabel" destination="wnt-2f-bwe" id="nq7-Df-gms"/>
-                        <outlet property="planetaryHourSymbolLabel" destination="HeA-Dr-1qS" id="Wtf-Pu-HqM"/>
+                        <outlet property="planetaryHoursTable" destination="C7H-qT-wzu" id="4MU-or-90v"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="-55" y="320"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
