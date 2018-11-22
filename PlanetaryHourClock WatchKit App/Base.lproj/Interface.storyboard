@@ -16,7 +16,7 @@
                         <table alignment="center" verticalAlignment="center" id="C7H-qT-wzu">
                             <items>
                                 <tableRow identifier="PlanetaryHoursTableRow" selectable="NO" id="GBy-fj-OJ8" customClass="PlanetaryHourRowController">
-                                    <group key="rootItem" width="1" height="1" alignment="left" animationDuration="2" id="MJ0-iX-qT4">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="MJ0-iX-qT4">
                                         <items>
                                             <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="3C3-AV-Nf5">
                                                 <items>
@@ -25,7 +25,7 @@
                                                             <label alignment="center" verticalAlignment="center" text="+" textAlignment="right" id="MGX-Dg-cDm">
                                                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </label>
-                                                            <timer alignment="center" verticalAlignment="center" textAlignment="left" enabled="YES" format="abbreviated" previewedSeconds="0" id="20a-fU-bjA">
+                                                            <timer alignment="center" verticalAlignment="center" textAlignment="left" enabled="YES" format="abbreviated" previewedSeconds="43200" id="20a-fU-bjA">
                                                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </timer>
                                                         </items>
@@ -43,7 +43,7 @@
                                                             <label alignment="center" verticalAlignment="center" text="-" textAlignment="right" id="Bt1-H0-074">
                                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </label>
-                                                            <timer alignment="center" verticalAlignment="center" textAlignment="left" enabled="YES" format="abbreviated" previewedSeconds="0" id="R3y-b4-gyD">
+                                                            <timer alignment="center" verticalAlignment="center" textAlignment="left" enabled="YES" format="abbreviated" previewedSeconds="43200" id="R3y-b4-gyD">
                                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </timer>
                                                         </items>
@@ -76,35 +76,27 @@
             <point key="canvasLocation" x="-55" y="320"/>
         </scene>
         <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
+        <scene sceneID="zKT-EZ-f9A">
             <objects>
-                <notificationController id="YCC-NB-fut">
+                <notificationController id="SwR-XL-SQr">
                     <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label alignment="left" text="Alert Label" id="2k8-ZO-08K"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" id="Cty-fz-ROn"/>
                     <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
-                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                        <outlet property="notificationAlertLabel" destination="2k8-ZO-08K" id="58w-4D-oMb"/>
+                        <segue destination="EM1-hM-uQi" kind="relationship" relationship="dynamicNotificationInterface" id="W92-1Q-Y8Y"/>
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="-103" y="678"/>
         </scene>
         <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
+        <scene sceneID="OoN-zZ-18H">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController"/>
+                <controller id="EM1-hM-uQi" customClass="NotificationController"/>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="Niz-AI-uX2">
-            <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="345"/>
+            <point key="canvasLocation" x="197" y="678"/>
         </scene>
     </scenes>
 </document>

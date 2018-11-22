@@ -8,7 +8,10 @@
 
 #import <WatchKit/WatchKit.h>
 #import <Foundation/Foundation.h>
+#import <UserNotifications/UserNotifications.h>
+#import <UIKit/UIKit.h>
 
 @interface NotificationController : WKUserNotificationInterfaceController
+
 
 @end

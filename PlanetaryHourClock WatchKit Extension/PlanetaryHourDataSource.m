@@ -64,6 +64,7 @@ static PlanetaryHourDataSource *sharedDataSource = NULL;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"%s\n%@", __PRETTY_FUNCTION__, error.localizedDescription);
+    [manager requestLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -315,7 +316,7 @@ NSArray<NSNumber *> *(^hourDurations)(NSTimeInterval) = ^(NSTimeInterval daySpan
     return hourDurations;
 };
 
-- (void)planetaryHours:(CurrentPlanetaryHourCompletionBlock)currentPlanetaryHour
+- (void)planetaryHours:(PlanetaryHourCompletionBlock)planetaryHour
 {
     FESSolarCalculator *solarCalculation = [self solarCalculationForDate:nil location:nil];
     NSTimeInterval daySpan         = [solarCalculation.sunset timeIntervalSinceDate:solarCalculation.sunrise];
@@ -337,7 +338,7 @@ NSArray<NSNumber *> *(^hourDurations)(NSTimeInterval) = ^(NSTimeInterval daySpan
         
         NSAttributedString *symbol        = attributedPlanetSymbol(planetSymbolForHour(solarCalculation.sunrise, hour));
         NSString *name                    = planetNameForHour(solarCalculation.sunrise, hour);
-        currentPlanetaryHour(symbol, name, startTime, endTime, hour, ([dateInterval containsDate:[NSDate date]]) ? YES : NO);
+        planetaryHour(symbol, name, startTime, endTime, hour, ([dateInterval containsDate:[NSDate date]]) ? YES : NO);
         
         hour++;
         if (hour < HOURS_PER_DAY)
