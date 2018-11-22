@@ -78,7 +78,7 @@
         <!--Static Notification Interface Controller-->
         <scene sceneID="zKT-EZ-f9A">
             <objects>
-                <notificationController id="SwR-XL-SQr">
+                <notificationController id="SwR-XL-SQr" customClass="NotificationController">
                     <items>
                         <label alignment="left" text="Alert Label" id="2k8-ZO-08K"/>
                     </items>
@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="notificationAlertLabel" destination="2k8-ZO-08K" id="58w-4D-oMb"/>
                         <segue destination="EM1-hM-uQi" kind="relationship" relationship="dynamicNotificationInterface" id="W92-1Q-Y8Y"/>
+                        <segue destination="BoC-Wg-ndv" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="hgu-Hs-baH"/>
                     </connections>
                 </notificationController>
             </objects>
@@ -97,6 +98,13 @@
                 <controller id="EM1-hM-uQi" customClass="NotificationController"/>
             </objects>
             <point key="canvasLocation" x="197" y="678"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="YNX-w1-WJD">
+            <objects>
+                <controller id="BoC-Wg-ndv" customClass="NotificationController"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="378"/>
         </scene>
     </scenes>
 </document>
