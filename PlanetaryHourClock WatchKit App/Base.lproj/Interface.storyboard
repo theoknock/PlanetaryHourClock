@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="watchOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
@@ -73,20 +74,20 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-55" y="320"/>
+            <point key="canvasLocation" x="-103" y="378"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="zKT-EZ-f9A">
             <objects>
-                <notificationController id="SwR-XL-SQr" customClass="NotificationController">
+                <notificationController id="SwR-XL-SQr">
                     <items>
                         <label alignment="left" text="Alert Label" id="2k8-ZO-08K"/>
                     </items>
-                    <notificationCategory key="notificationCategory" id="Cty-fz-ROn"/>
+                    <notificationCategory key="notificationCategory" identifier="PlanetaryHourNotification" id="Cty-fz-ROn"/>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="2k8-ZO-08K" id="58w-4D-oMb"/>
                         <segue destination="EM1-hM-uQi" kind="relationship" relationship="dynamicNotificationInterface" id="W92-1Q-Y8Y"/>
-                        <segue destination="BoC-Wg-ndv" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="hgu-Hs-baH"/>
+                        <segue destination="x1a-fN-fjQ" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="LNH-dV-ftC"/>
                     </connections>
                 </notificationController>
             </objects>
@@ -100,9 +101,9 @@
             <point key="canvasLocation" x="197" y="678"/>
         </scene>
         <!--Notification Controller-->
-        <scene sceneID="YNX-w1-WJD">
+        <scene sceneID="j49-EN-qTw">
             <objects>
-                <controller id="BoC-Wg-ndv" customClass="NotificationController"/>
+                <controller id="x1a-fN-fjQ" customClass="NotificationController"/>
             </objects>
             <point key="canvasLocation" x="197" y="378"/>
         </scene>

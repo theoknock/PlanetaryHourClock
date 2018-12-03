@@ -24,6 +24,7 @@ typedef void(^PlanetaryHourCompletionBlock)(NSAttributedString *symbol, NSString
 @property (strong, nonatomic) dispatch_queue_t planetaryHourDataRequestQueue;
 
 - (void)planetaryHours:(PlanetaryHourCompletionBlock)planetaryHour;
+- (FESSolarCalculator *)solarCalculationForDate:(NSDate *)date location:(CLLocation *)location;
 
 @end
 

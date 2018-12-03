@@ -11,7 +11,9 @@
 #import <UserNotifications/UserNotifications.h>
 #import <UIKit/UIKit.h>
 
-@interface NotificationController : WKUserNotificationInterfaceController
+@interface NotificationController : WKUserNotificationInterfaceController <UNUserNotificationCenterDelegate>
+
+
 
 
 @end
