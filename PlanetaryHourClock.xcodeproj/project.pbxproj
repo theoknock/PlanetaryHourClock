@@ -11,6 +11,7 @@
 		B923225821A4CA0400FB6572 /* PlanetaryHourRowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B923225521A4CA0400FB6572 /* PlanetaryHourRowController.m */; };
 		B9282FE321A24CDD00038223 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ACC08A21A0E3A900574C3F /* Interface.storyboard */; };
 		B9282FE821A26CFA00038223 /* PlanetaryHourDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B9282FE721A26CFA00038223 /* PlanetaryHourDataSource.m */; };
+		B96777E121D96CFE00CAC5E1 /* gallery.ckcomplication in Resources */ = {isa = PBXBuildFile; fileRef = B96777E021D96CFE00CAC5E1 /* gallery.ckcomplication */; };
 		B9ACC07421A0E3A800574C3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC07321A0E3A800574C3F /* AppDelegate.m */; };
 		B9ACC07721A0E3A800574C3F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC07621A0E3A800574C3F /* ViewController.m */; };
 		B9ACC07A21A0E3A800574C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9ACC07821A0E3A800574C3F /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		B923225621A4CA0400FB6572 /* TableInterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableInterfaceController.h; sourceTree = "<group>"; wrapsLines = 0; };
 		B9282FE621A26CFA00038223 /* PlanetaryHourDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanetaryHourDataSource.h; sourceTree = "<group>"; wrapsLines = 0; };
 		B9282FE721A26CFA00038223 /* PlanetaryHourDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanetaryHourDataSource.m; sourceTree = "<group>"; wrapsLines = 0; };
+		B96777E021D96CFE00CAC5E1 /* gallery.ckcomplication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gallery.ckcomplication; sourceTree = "<group>"; };
 		B9ACC06F21A0E3A800574C3F /* PlanetaryHourClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanetaryHourClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9ACC07221A0E3A800574C3F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9ACC07321A0E3A800574C3F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		B9ACC06621A0E3A800574C3F = {
 			isa = PBXGroup;
 			children = (
+				B96777E021D96CFE00CAC5E1 /* gallery.ckcomplication */,
 				B9ACC07121A0E3A800574C3F /* PlanetaryHourClock */,
 				B9ACC08921A0E3A900574C3F /* PlanetaryHourClock WatchKit App */,
 				B9ACC09821A0E3A900574C3F /* PlanetaryHourClock WatchKit Extension */,
@@ -306,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96777E121D96CFE00CAC5E1 /* gallery.ckcomplication in Resources */,
 				B9ACC07F21A0E3A900574C3F /* LaunchScreen.storyboard in Resources */,
 				B9ACC07C21A0E3A900574C3F /* Assets.xcassets in Resources */,
 				B9ACC07A21A0E3A800574C3F /* Main.storyboard in Resources */,

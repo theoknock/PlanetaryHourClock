@@ -1,0 +1,16 @@
+{
+  "class" : "CLKComplicationTemplateModularLargeStandardBody",
+  "body2TextProvider" : {
+    "class" : "CLKSimpleTextProvider",
+    "text" : "S"
+  },
+  "body1TextProvider" : {
+    "class" : "CLKSimpleTextProvider",
+    "text" : "S"
+  },
+  "version" : 30000,
+  "headerTextProvider" : {
+    "class" : "CLKSimpleTextProvider",
+    "text" : "S"
+  }
+}
