@@ -186,7 +186,6 @@
 				B9ACC09C21A0E3A900574C3F /* ExtensionDelegate.h */,
 				B9ACC09D21A0E3A900574C3F /* ExtensionDelegate.m */,
 				B9ACC09F21A0E3A900574C3F /* NotificationController.h */,
-				B9ACC0A021A0E3A900574C3F /* NotificationController.m */,
 				B9ACC0B721A0E60100574C3F /* FESSolarCalculator.h */,
 				B9ACC0B621A0E60100574C3F /* FESSolarCalculator.m */,
 				B9282FE621A26CFA00038223 /* PlanetaryHourDataSource.h */,
@@ -203,6 +202,7 @@
 		B9F23BD021A3044B0032D2DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9ACC0A021A0E3A900574C3F /* NotificationController.m */,
 				B9F23BD121A3044C0032D2DB /* CoreLocation.framework */,
 			);
 			name = Frameworks;
