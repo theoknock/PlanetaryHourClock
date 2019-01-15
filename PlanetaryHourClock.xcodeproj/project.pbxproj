@@ -26,7 +26,6 @@
 		B9ACC0A121A0E3A900574C3F /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC0A021A0E3A900574C3F /* NotificationController.m */; };
 		B9ACC0A421A0E3A900574C3F /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC0A321A0E3A900574C3F /* ComplicationController.m */; };
 		B9ACC0A621A0E3AA00574C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9ACC0A521A0E3AA00574C3F /* Assets.xcassets */; };
-		B9ACC0B821A0E60100574C3F /* FESSolarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B9ACC0B621A0E60100574C3F /* FESSolarCalculator.m */; };
 		B9F23BD221A3044C0032D2DB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F23BD121A3044C0032D2DB /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,8 +103,6 @@
 		B9ACC0A521A0E3AA00574C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9ACC0A721A0E3AA00574C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9ACC0A821A0E3AA00574C3F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		B9ACC0B621A0E60100574C3F /* FESSolarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FESSolarCalculator.m; sourceTree = "<group>"; wrapsLines = 0; };
-		B9ACC0B721A0E60100574C3F /* FESSolarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FESSolarCalculator.h; sourceTree = "<group>"; };
 		B9F23BD121A3044C0032D2DB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS5.1.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -186,8 +183,6 @@
 				B9ACC09C21A0E3A900574C3F /* ExtensionDelegate.h */,
 				B9ACC09D21A0E3A900574C3F /* ExtensionDelegate.m */,
 				B9ACC09F21A0E3A900574C3F /* NotificationController.h */,
-				B9ACC0B721A0E60100574C3F /* FESSolarCalculator.h */,
-				B9ACC0B621A0E60100574C3F /* FESSolarCalculator.m */,
 				B9282FE621A26CFA00038223 /* PlanetaryHourDataSource.h */,
 				B9282FE721A26CFA00038223 /* PlanetaryHourDataSource.m */,
 				B9ACC0A221A0E3A900574C3F /* ComplicationController.h */,
@@ -353,7 +348,6 @@
 			files = (
 				B9ACC09E21A0E3A900574C3F /* ExtensionDelegate.m in Sources */,
 				B923225821A4CA0400FB6572 /* PlanetaryHourRowController.m in Sources */,
-				B9ACC0B821A0E60100574C3F /* FESSolarCalculator.m in Sources */,
 				B9ACC0A421A0E3A900574C3F /* ComplicationController.m in Sources */,
 				B923225721A4CA0400FB6572 /* TableInterfaceController.m in Sources */,
 				B9ACC0A121A0E3A900574C3F /* NotificationController.m in Sources */,

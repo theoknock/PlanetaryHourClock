@@ -36,8 +36,9 @@ double const FESSolarCalculationZenithCivil = 96.0;
 double const FESSolarCalculationZenithNautical = 102.0;
 double const FESSolarCalculationZenithAstronomical = 108.0;
 
-double const toRadians = M_PI / 180;
-double const toDegrees = 180 / M_PI;
+
+#define degreesToRadians( degrees ) ( ( degrees ) / 180.0f * M_PI )
+#define radiansToDegrees( degrees ) ( ( degrees ) * M_PI * 180.0f )
 
 @interface FESSolarCalculator ( )
 
@@ -149,10 +150,10 @@ double const toDegrees = 180 / M_PI;
     
     // define some of our mathmatical values;
     double Nearest = 0.0;
-    double ElipticalLongitudeOfSun = 0.0;
-    double ElipticalLongitudeRadians = ElipticalLongitudeOfSun * toRadians;
+    double EllipticalLongitudeOfSun = 0.0;
+    double EllipticalLongitudeRadians = degreesToRadians(EllipticalLongitudeOfSun);
     double MeanAnomoly = 0.0;
-    double MeanAnomolyRadians = MeanAnomoly * toRadians;
+    double MeanAnomolyRadians = degreesToRadians(MeanAnomoly);
     double MAprev = -1.0;
     double Jtransit = 0.0;
     
@@ -169,18 +170,18 @@ double const toDegrees = 180 / M_PI;
         }
         double Ms = (357.5291 + 0.98560028 * (Japprox - JanuaryFirst2000JDN));
         MeanAnomoly = fmod(Ms, 360.0);
-        MeanAnomolyRadians = MeanAnomoly * toRadians;
+        MeanAnomolyRadians = degreesToRadians(MeanAnomoly);
         double EquationOfCenter = (1.9148 * sin(MeanAnomolyRadians)) + (0.0200 * sin(2.0 * (MeanAnomolyRadians))) + (0.0003 * sin(3.0 * (MeanAnomolyRadians)));
         double eLs = (MeanAnomoly + 102.9372 + EquationOfCenter + 180.0);
-        ElipticalLongitudeOfSun = fmod(eLs, 360.0);
-        ElipticalLongitudeRadians = ElipticalLongitudeOfSun * toRadians;
+        EllipticalLongitudeOfSun = fmod(eLs, 360.0);
+        EllipticalLongitudeRadians = degreesToRadians(EllipticalLongitudeOfSun);
         if (Jtransit == 0.0) {
-            Jtransit = Japprox + (0.0053 * sin(MeanAnomolyRadians)) - (0.0069 * sin(2.0 * ElipticalLongitudeRadians));
+            Jtransit = Japprox + (0.0053 * sin(MeanAnomolyRadians)) - (0.0069 * sin(2.0 * EllipticalLongitudeRadians));
         }
     }
     
-    double DeclinationOfSun = asin( sin(ElipticalLongitudeRadians) * sin(23.45 * toRadians) ) * toDegrees;
-    double DeclinationOfSunRadians = DeclinationOfSun * toRadians;
+    double DeclinationOfSun = radiansToDegrees(asin( sin(EllipticalLongitudeRadians) * sin(degreesToRadians(23.45)) ));
+    double DeclinationOfSunRadians = degreesToRadians(DeclinationOfSun);
     
     // We now have solar noon for our day
     _solarNoon = [FESSolarCalculator dateFromJulianDayNumber:Jtransit];
@@ -188,14 +189,14 @@ double const toDegrees = 180 / M_PI;
     // create a block to run our per-zenith calculations based on solar noon
     void (^computeSolarData)(FESSolarCalculator *, FESSolarCalculationType, double) = ^(FESSolarCalculator *w_solarCalculator, FESSolarCalculationType calculationType, double zenith) {
         __strong FESSolarCalculator *s_solarCalculator = w_solarCalculator;
-        double H1 = (cos(zenith * toRadians) - sin(self.location.coordinate.latitude * toRadians) * sin(DeclinationOfSunRadians));
-        double H2 = (cos(self.location.coordinate.latitude * toRadians) * cos(DeclinationOfSunRadians));
-        double HourAngle = acos( (H1  * toRadians) / (H2  * toRadians) ) * toDegrees;
+        double H1 = (cos(degreesToRadians(zenith)) - sin(degreesToRadians(self.location.coordinate.latitude)) * sin(DeclinationOfSunRadians));
+        double H2 = (cos(degreesToRadians(self.location.coordinate.latitude)) * cos(DeclinationOfSunRadians));
+        double HourAngle = radiansToDegrees(acos( (degreesToRadians(H1)) / (degreesToRadians(H2)) ));
 
         double Jss = JanuaryFirst2000JDN + 0.0009 + ((HourAngle + westLongitude)/360.0) + Nearest;
         
         // compute the setting time from Jss approximation
-        double Jset = Jss + (0.0053 * sin(MeanAnomolyRadians)) - (0.0069 * sin(2.0 * ElipticalLongitudeRadians));
+        double Jset = Jss + (0.0053 * sin(MeanAnomolyRadians)) - (0.0069 * sin(2.0 * EllipticalLongitudeRadians));
         // calculate the rise time based on solar noon and the set time
         double Jrise = Jtransit - (Jset - Jtransit);        
         

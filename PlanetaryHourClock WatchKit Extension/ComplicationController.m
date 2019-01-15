@@ -25,15 +25,14 @@
 }
 
 - (void)getTimelineStartDateForComplication:(CLKComplication *)complication withHandler:(void(^)(NSDate * __nullable date))handler {
-    NSDate *startDate = [PlanetaryHourDataSource.sharedDataSource solarCalculationForDate:nil location:nil].sunrise;
-    handler(startDate);
-    NSLog(@"Timeline start date\t%@", [startDate description]);
+    
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
+    handler([planetaryHour objectForKey:@"Sunrise"]);
 }
 
 - (void)getTimelineEndDateForComplication:(CLKComplication *)complication withHandler:(void(^)(NSDate * __nullable date))handler {
-    NSDate *endDate = [PlanetaryHourDataSource.sharedDataSource solarCalculationForDate:nil location:nil].sunset;
-    handler(endDate);
-    NSLog(@"Timeline end date\t%@", [endDate description]);
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
+    handler([planetaryHour objectForKey:@"Sunset"]);
 }
 
 - (void)getPrivacyBehaviorForComplication:(CLKComplication *)complication withHandler:(void(^)(CLKComplicationPrivacyBehavior privacyBehavior))handler {
@@ -95,12 +94,31 @@
 // Body Templates
 // CLKComplicationTemplateModularLargeTallBody
 // A template for displaying a header row and a tall row of body text.
-CLKComplicationTemplateModularLargeTallBody *(^complicationTemplateModularLargeTallBody)(Planet) = ^(Planet planet)
+
+NSString *(^earthName)(void) = ^(void)
 {
+    return @"Earth";
+};
+
+NSString *(^earthSymbol)(void) = ^(void)
+{
+    return @"㊏";
+};
+
+UIColor *(^earthColor)(void) = ^(void)
+{
+    return [UIColor whiteColor];
+};
+
+
+CLKComplicationTemplateModularLargeTallBody *(^complicationTemplateModularLargeTallBody)(void) = ^(void)
+{
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
+    NSLog(@"Name: %@", @"Name");
     CLKComplicationTemplateModularLargeTallBody *template = [[CLKComplicationTemplateModularLargeTallBody alloc] init] ;
-    ((CLKSimpleTextProvider *)((CLKComplicationTemplateModularLargeTallBody *)template).headerTextProvider).text = nameForPlanet(planet);
-    ((CLKSimpleTextProvider *)((CLKComplicationTemplateModularLargeTallBody *)template).bodyTextProvider).text = symbolForPlanet(planet);
-    ((CLKSimpleTextProvider *)((CLKComplicationTemplateModularLargeTallBody *)template).bodyTextProvider).tintColor = colorForPlanet(planet);
+    ((CLKSimpleTextProvider *)((CLKComplicationTemplateModularLargeTallBody *)template).headerTextProvider).text = @"Earth"; //earthName();// (!planetaryHour) ? earthName() : [planetaryHour objectForKey:@"Name"];
+    ((CLKSimpleTextProvider *)((CLKComplicationTemplateModularLargeTallBody *)template).bodyTextProvider).text = (!planetaryHour) ? earthSymbol() :  [planetaryHour objectForKey:@"Symbol"];
+    ((CLKSimpleTextProvider *)((CLKComplicationTemplateModularLargeTallBody *)template).bodyTextProvider).tintColor = (!planetaryHour) ? earthColor() : [planetaryHour objectForKey:@"Color"];
     
     return template;
 };
@@ -141,10 +159,11 @@ CLKComplicationTemplateModularLargeTallBody *(^complicationTemplateModularLargeT
 
 // CLKComplicationTemplateModularSmallSimpleText
 // A template for displaying a small amount of text.
-CLKComplicationTemplateModularSmallSimpleText *(^complicationTemplateModularSmallSimpleText)(Planet) = ^(Planet planet)
+CLKComplicationTemplateModularSmallSimpleText *(^complicationTemplateModularSmallSimpleText)(void) = ^(void)
 {
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
     CLKComplicationTemplateModularSmallSimpleText *template = [[CLKComplicationTemplateModularSmallSimpleText alloc] init];
-    template.textProvider = [CLKSimpleTextProvider textProviderWithText:symbolForPlanet(planet)];
+    template.textProvider = [CLKSimpleTextProvider textProviderWithText:[planetaryHour objectForKey:@"Symbol"]];
     
     return template;
 };
@@ -178,10 +197,12 @@ CLKComplicationTemplateModularSmallSimpleText *(^complicationTemplateModularSmal
 
 // CLKComplicationTemplateExtraLargeSimpleText
 // A template for displaying a small amount of text
-CLKComplicationTemplateExtraLargeSimpleText *(^complicationTemplateModularLargeSimpleText)(Planet) = ^(Planet planet)
+CLKComplicationTemplateExtraLargeSimpleText *(^complicationTemplateModularLargeSimpleText)(void) = ^(void)
 {
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
+    
     CLKComplicationTemplateExtraLargeSimpleText *template = [[CLKComplicationTemplateExtraLargeSimpleText alloc] init];
-    template.textProvider = [CLKSimpleTextProvider textProviderWithText:symbolForPlanet(planet)];
+    template.textProvider = [CLKSimpleTextProvider textProviderWithText:[planetaryHour objectForKey:@"Symbol"]];
     
     return template;
 };
@@ -209,10 +230,12 @@ CLKComplicationTemplateExtraLargeSimpleText *(^complicationTemplateModularLargeS
 // Text Templates
 // CLKComplicationTemplateCircularSmallRingText
 // A template for displaying a short text string encircled by a configurable progress ring.
-CLKComplicationTemplateCircularSmallRingText *(^complicationTemplateCircularSmallRingText)(Planet) = ^(Planet planet)
+CLKComplicationTemplateCircularSmallRingText *(^complicationTemplateCircularSmallRingText)(void) = ^(void)
 {
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
+    
     CLKComplicationTemplateCircularSmallRingText *template = [[CLKComplicationTemplateCircularSmallRingText alloc] init];
-    template.textProvider = [CLKSimpleTextProvider textProviderWithText:symbolForPlanet(planet)];
+    template.textProvider = [CLKSimpleTextProvider textProviderWithText:[planetaryHour objectForKey:@"Name"]];
     
     return template;
 };
@@ -233,10 +256,12 @@ CLKComplicationTemplateCircularSmallRingText *(^complicationTemplateCircularSmal
 // CLKComplicationTemplateUtilitarianLargeFlat
 // A template for displaying an image and string in a single long line.
 
-CLKComplicationTemplateUtilitarianLargeFlat *(^complicationTemplateUtilitarianLargeFlat)(Planet) = ^(Planet planet)
+CLKComplicationTemplateUtilitarianLargeFlat *(^complicationTemplateUtilitarianLargeFlat)(void) = ^(void)
 {
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
+    
     CLKComplicationTemplateUtilitarianLargeFlat *template = [[CLKComplicationTemplateUtilitarianLargeFlat alloc] init];
-    template.textProvider = [CLKSimpleTextProvider textProviderWithText:symbolForPlanet(planet)];
+    template.textProvider = [CLKSimpleTextProvider textProviderWithText:[planetaryHour objectForKey:@"Planet"]];
     
     return template;
 };
@@ -266,10 +291,12 @@ CLKComplicationTemplateUtilitarianLargeFlat *(^complicationTemplateUtilitarianLa
 
 // CLKComplicationTemplateUtilitarianSmallFlat
 // A template for displaying an image and text in a single line
-CLKComplicationTemplateUtilitarianSmallFlat *(^complicationTemplateUtilitarianSmallFlat)(Planet) = ^(Planet planet)
+CLKComplicationTemplateUtilitarianSmallFlat *(^complicationTemplateUtilitarianSmallFlat)(void) = ^(void)
 {
+    NSDictionary *planetaryHour = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
+    
     CLKComplicationTemplateUtilitarianSmallFlat *template = [[CLKComplicationTemplateUtilitarianSmallFlat alloc] init];
-    template.textProvider = [CLKSimpleTextProvider textProviderWithText:symbolForPlanet(planet)];
+    template.textProvider = [CLKSimpleTextProvider textProviderWithText:[planetaryHour objectForKey:@"Planet"]];
     
     return template;
 };
@@ -278,7 +305,6 @@ CLKComplicationTemplate *(^templateForComplicationFamily)(CLKComplicationFamily)
 {
     CLKComplicationTemplate *template = nil;
     
-    Planet planet = [PlanetaryHourDataSource.sharedDataSource currentPlanetaryHour];
     //    if (!templates) {
     //        templates = [NSMutableDictionary dictionary];
     //    }
@@ -297,44 +323,44 @@ CLKComplicationTemplate *(^templateForComplicationFamily)(CLKComplicationFamily)
             //      CLKComplicationFamilyModularLarge
             //      A large rectangular area used in the Modular clock face.
         case CLKComplicationFamilyModularLarge:
-            template = complicationTemplateModularLargeTallBody(planet);
+            template = complicationTemplateModularLargeTallBody();
             break;
             
             //      CLKComplicationFamilyModularSmall
             //      A small square area used in the Modular clock face.
         case CLKComplicationFamilyModularSmall:
-            template = complicationTemplateModularSmallSimpleText(planet);
+            template = complicationTemplateModularSmallSimpleText();
             break;
             
             
             //      CLKComplicationFamilyUtilitarianLarge
             //      A large rectangular area that spans the width of the screen in the Utility and Mickey clock faces.
         case CLKComplicationFamilyUtilitarianLarge:
-            template = complicationTemplateUtilitarianLargeFlat(planet);
+            template = complicationTemplateUtilitarianLargeFlat();
             break;
             
             //      CLKComplicationFamilyUtilitarianSmall
             //      A small square or rectangular area used in the Utility, Mickey, Chronograph, and Simple clock faces.
         case CLKComplicationFamilyUtilitarianSmall:
-            template = complicationTemplateUtilitarianSmallFlat(planet);
+            template = complicationTemplateUtilitarianSmallFlat();
             break;
             
             //      CLKComplicationFamilyUtilitarianSmallFlat
             //      A small rectangular area used in the in the Photos, Motion, and Timelapse clock faces.
         case CLKComplicationFamilyUtilitarianSmallFlat:
-            template = complicationTemplateUtilitarianSmallFlat(planet);
+            template = complicationTemplateUtilitarianSmallFlat();
             break;
             
             //      CLKComplicationFamilyExtraLarge
             //      A large square area used in the X-Large clock face.
         case CLKComplicationFamilyExtraLarge:
-            template = complicationTemplateModularLargeSimpleText(planet);
+            template = complicationTemplateModularLargeSimpleText();
             break;
             
             //      CLKComplicationFamilyCircularSmall
             //      A small circular area used in the Color clock face.
         case CLKComplicationFamilyCircularSmall:
-            template = complicationTemplateCircularSmallRingText(planet);
+            template = complicationTemplateCircularSmallRingText();
             break;
             
             //      CLKComplicationFamilyGraphicCircular
